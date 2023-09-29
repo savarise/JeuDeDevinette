@@ -2,6 +2,8 @@ import random
 
 essai = -1
 nb_essai = 0
+borne_minimale = 0
+borne_maximale = 0
 
 # cette fonction est pour lorsque lessai est le bon nombre, ELLE VA SOIT QUITTER LE JEU OU REJOUER
 def QuiterOuRejouer():
@@ -30,18 +32,25 @@ def essayer():
     else:
         QuiterOuRejouer()
 
-# cette fonction demarre le jeu et te laisse reessayer jusqua tu gagnes
-def questioner():
+# cette fonction choisis les bornes du jeu
+def bornes():
     bornes = str(input("Voulez-vous choisir les bornes (o/n)?"))
     if bornes == "o":
+        global borne_minimale
+        global borne_maximale
         borne_minimale = int(input("Choisis une borne minimale"))
         borne_maximale = int(input("Choisis une borne maximale"))
     else:
         borne_minimale = 0
         borne_maximale = 100
+
+# cette fonction demarre le jeu et te laisse reessayer jusqua tu gagnes
+def questioner():
+    bornes()
     global x
     x = random.randint(borne_minimale, borne_maximale)
-    print("J'ai choisi un nombre aléatoire entre " + str(borne_minimale) + " et " + str(borne_maximale) + " ,essaye de le deviner")
+    print("J'ai choisi un nombre aléatoire entre " + str(borne_minimale) + " et " + str(
+        borne_maximale) + ", essaye de le deviner")
     while x != essai:
         essayer()
 
