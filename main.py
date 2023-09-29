@@ -32,8 +32,13 @@ def essayer():
 
 # cette fonction demarre le jeu et te laisse reessayer jusqua tu gagnes
 def questioner():
-    borne_minimale = int(input("Choisis une borne minimale"))
-    borne_maximale = int(input("Choisis une borne maximale"))
+    bornes = str(input("Voulez-vous choisir les bornes (o/n)?"))
+    if bornes == "o":
+        borne_minimale = int(input("Choisis une borne minimale"))
+        borne_maximale = int(input("Choisis une borne maximale"))
+    else:
+        borne_minimale = 0
+        borne_maximale = 100
     global x
     x = random.randint(borne_minimale, borne_maximale)
     print("J'ai choisi un nombre aléatoire entre " + str(borne_minimale) + " et " + str(borne_maximale) + " ,essaye de le deviner")
